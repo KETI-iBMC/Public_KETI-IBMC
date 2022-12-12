@@ -13,10 +13,9 @@
 	2.4. [이미지 빌드](#4-이미지-빌드)  
 	2.5. [BMC에 이미지 쓰기](#5-bmc에-이미지-쓰기)  
 3. [Usage](#usage)  
-	3.1. [KETI-IPMI 실행](#1-keti-ipmi-실행)  
-	3.2. [IPMItool](#2-ipmitool)  
-	3.3. [KETI-REST 실행](#3-keti-rest-실행)  
-	3.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
+	3.1. [KETI-IPMI 실행](#1-keti-ipmi-실행)    
+	3.2. [KETI-REST 실행](#2-keti-rest-실행)  
+	3.3. [KETI-REST 지원 API 리스트 및 URL](#3-keti-rest-지원-api-리스트-및-url)
 	
 
 
@@ -53,7 +52,7 @@ $ tar -xvzf buildroot-2015.11.tar.gz
 $ cd buildroot-2015.11.tar.gz
 ```  
 	
-4. KETI-IPMI.tar 압축을 풀어 ./source/ast_app 디렉토리에 복사  
+4. KETI-IPMI.tar 압축을 풀어 ./source/ast_app 디렉토리에 복사  (KETI-IPMI.tar는 소스코드와 함께 제공됨)
 ```bash
 $ tar -xvzf KETI-IPMI.tar  
 $ cp -r KETI-IPMB ./source/ast_app  
@@ -79,7 +78,10 @@ $ ./prepare_buildTool.sh
   
   
 ### 2. Buildroot menuconfig  
- 압축을 해제한 디렉토리에서 make menuconfig를 입력하면 Buildroot에 대한 전반적인 설정이 가능하다. 가장 먼저 아래와 같이 설정한다.
+
+ - 함께 제공되는 config 파일과 toolchain을 직접 다운로드 후 설치 필요
+ - buildroot 파일 압축을 해제한 디렉토리에서 make menuconfig를 입력하면 Buildroot에 대한 전반적인 설정이 가능하다. 가장 먼저 아래와 같이 설정한다.
+
  
  1. Target Option 설정  
 
@@ -130,7 +132,7 @@ $ ./armv6-aspeed-linux-gnueabi-gcc –v
 
 ### 3. KETI-IPMI 빌드
 
-#### AST_2500
+#### AST2500
 ```bash
 $ make toolchain
 $ make
@@ -139,7 +141,7 @@ $ ./sk_make.sh
 ```
 
 
-#### AST_2600
+#### AST2600
 ```bash
 $ cd /home/keti/BMC_SDK/source/AST2600_BMC
 $ cmake CMakeLists.txt
@@ -149,11 +151,35 @@ $ make
 ### 4. 이미지 빌드
 <br/>
 
-```
-Buildroot로 이미지 빌드
+- Buildroot로 이미지 빌드  
+- 빌드한 이미지는 ./output/images/all.bin 파일로 생성됨  
+
+
+#### AST2500  
+```bash
 $ ./build_option.sh
-빌드한 이미지는 ./output/images/all.bin 파일로 생성됨
 ```
+
+#### AST2600  
+```bash
+$ ./build_option.sh
+```
+
+-i : Static / DHCP 설정 (1로 설정 시 IP : 10.0.6.111, 2로 설정 시 IP : 10.0.6.112, 3 : DHCP)  
+-m : MTD 적용 옵션 (0 : ramdisk 부팅 / 1 : cramfs / 2 : NFS 부팅)  
+* NFS 적용 시 s, n, c 옵션을 적용해야 함.  
+
+-s : NFS Server IP Address  
+-c : NFS Client IP Address  
+-n : NFS Server Directory  
+<br/>
+기본적으로 Static IP 또는 NFS의 Gateway IP Address는 10.0.0.1, Netmask는 255.255.248.0으로 설정되어 있음. 따라서 환경 구축 시 참고하여 구축 해야함.  
+<br/>
+Ramdisk 예시 : ./build_option.sh –i 3 –m 0
+CRAMFS 예시 : ./build_option.sh –i 3 –m 1
+NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –n /nfs/ast_ktnf/
+
+
 
 ### 5. BMC에 이미지 쓰기
 #### AST2500(2600)-EVB
@@ -185,27 +211,14 @@ $ ./build_option.sh
 $ KETI-IPMI
 ```
 
-### 2. IPMItool  
-- 사용할 Host Server에 IPMItool 설치  
-```bash
-$ apt-get install -y ipmitool
-```
-- BMC의 Administrator 계정은 ID : admin, Password : admin으로 설정되어있음  
-```bash
-IPMItool 기본 사용법
-$ ipmitool –I <lan/lanplus> -H <BMC IP Address> -U <User ID> -P <User Password> <command>
-```
-> IPMItool 명령어 <https://docs.oracle.com/cd/E40704_01/html/E40350/z400000c1016683.html>  
 
-<br/>  
-
-### 3. KETI-REST 실행
+### 2. KETI-REST 실행
 ```bash
 # 8000번 포트 사용
 $ restful_server
 ```  
 
-### 4. KETI-REST 지원 API 리스트 및 URL
+### 3. KETI-REST 지원 API 리스트 및 URL
 - System Information  
 
 |   ID   |    URL   |   Method   |                   상세기능                 |
