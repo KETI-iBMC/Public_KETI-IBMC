@@ -10,7 +10,7 @@
 	2.3. [이미지 빌드](#3-이미지-빌드)  
 	2.4. [BMC에 이미지 쓰기](#4-bmc에-이미지-쓰기)  
 3. [Usage](#usage)  
-	3.1, [빌드](#1-빌드)  
+	3.1. [빌드](#1-빌드)  
 	3.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
 	3.3. [KETI-REST 실행](#3-keti-rest-실행)  
 	3.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
