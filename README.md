@@ -49,7 +49,7 @@ $ tar -xvzf buildroot-2015.11.tar.gz
 	
 3. 해당 디렉토리 진입  
 ```bash
-$ cd buildroot-2015.11.tar.gz
+$ cd buildroot
 ```  
 	
 4. KETI-IPMI.tar 압축을 풀어 ./source/ast_app 디렉토리에 복사  (KETI-IPMI.tar는 소스코드와 함께 제공됨)
@@ -107,8 +107,8 @@ $ ./prepare_buildTool.sh
  
  > Toolchain path를 절대경로로 변경  
  	- Toolchain 경로  
- 		- AST2500 : /home/keti/Workspace/buildroot-2015.11/source/armv6-aspeed-linux-gnueabi  
- 		- AST2600 : $(ROOT_DIR)/source/arm-aspeed-linux-gnueabihf  
+ 		- AST2500 : /home/keti/Workspace/buildroot/source/armv6-aspeed-linux-gnueabi  
+ 		- AST2600 : $/home/keti/BMC_SDK/source/arm-aspeed-linux-gnueabihf  
  
  > Toolchain prefix 입력  
  	- AST2500 : armv6-aspeed-linux-gnueabi  
@@ -136,10 +136,10 @@ $ ./armv6-aspeed-linux-gnueabi-gcc –v
 ```bash
 $ make toolchain
 $ make
-$ cd /home/keti/Workspace/buildroot-2015.11/source/ast_app
+$ cd /home/keti/Workspace/buildroot/source/ast_app
 $ ./sk_make.sh
 ```
-
+ast_app/KETI-IPMI 경로에 KETI-IPMI 파일 생성됨
 
 #### AST2600
 ```bash
@@ -147,6 +147,9 @@ $ cd /home/keti/BMC_SDK/source/AST2600_BMC
 $ cmake CMakeLists.txt
 $ make
 ```
+AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨  
+
+
 
 ### 4. 이미지 빌드
 <br/>
@@ -207,9 +210,19 @@ NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –
 ## Usage
 
 ### 1. KETI-IPMI 실행
+
+
+#### AST2500
+
 ```bash
 $ KETI-IPMI
 ```
+
+#### AST2600
+```bash
+$ KETI-Ibmc
+```
+
 
 
 ### 2. KETI-REST 실행
