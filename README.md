@@ -180,8 +180,7 @@ ast_app/KETI-IPMI 경로에 KETI-IPMI 파일 생성됨
 #### AST2600
 ```bash
 $ cd /home/keti/BMC_SDK/source/AST2600_BMC
-$ cmake CMakeLists.txt
-$ make
+$ ./bmc_build.sh
 ```
 AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨  
 
