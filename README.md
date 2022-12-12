@@ -13,7 +13,7 @@
 	2.4. [이미지 빌드](#4-이미지-빌드)  
 	2.5. [BMC에 이미지 쓰기](#5-bmc에-이미지-쓰기)  
 3. [Usage](#usage)  
-	3.1. [KETI-IPMI 실행](#1-keti-ipmi-실행)    
+	3.1. [BMC 상에서 KETI-IPMI 실행](#1-bmc-상에서-keti-ipmi-실행)    
 	3.2. [KETI-REST 실행](#2-keti-rest-실행)  
 	3.3. [KETI-REST 지원 API 리스트 및 URL](#3-keti-rest-지원-api-리스트-및-url)
 	
@@ -209,7 +209,7 @@ NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –
 
 ## Usage
 
-### 1. KETI-IPMI 실행
+### 1. BMC 상에서 KETI-IPMI 실행
 
 
 #### AST2500
