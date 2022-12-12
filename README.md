@@ -175,9 +175,9 @@ $ ./build_option.sh
 <br/>
 기본적으로 Static IP 또는 NFS의 Gateway IP Address는 10.0.0.1, Netmask는 255.255.248.0으로 설정되어 있음. 따라서 환경 구축 시 참고하여 구축 해야함.  
 <br/>
-Ramdisk 예시 : ./build_option.sh –i 3 –m 0
-CRAMFS 예시 : ./build_option.sh –i 3 –m 1
-NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –n /nfs/ast_ktnf/
+Ramdisk 예시 : ./build_option.sh –i 3 –m 0  
+CRAMFS 예시 : ./build_option.sh –i 3 –m 1  
+NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –n /nfs/ast_ktnf/  
 
 
 
