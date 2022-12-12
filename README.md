@@ -160,27 +160,40 @@ AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨
 
 #### AST2500  
 ```bash
-$ ./build_option.sh
+$ ./build_option.sh -i -m -s -c -n
 ```
-
-#### AST2600  
-```bash
-$ ./build_option.sh
-```
+**build_option.sh 옵션**  
 
 -i : Static / DHCP 설정 (1로 설정 시 IP : 10.0.6.111, 2로 설정 시 IP : 10.0.6.112, 3 : DHCP)  
 -m : MTD 적용 옵션 (0 : ramdisk 부팅 / 1 : cramfs / 2 : NFS 부팅)  
-* NFS 적용 시 s, n, c 옵션을 적용해야 함.  
-
+\* NFS 적용 시 s, n, c 옵션을 적용해야 함.  
 -s : NFS Server IP Address  
 -c : NFS Client IP Address  
 -n : NFS Server Directory  
 <br/>
 기본적으로 Static IP 또는 NFS의 Gateway IP Address는 10.0.0.1, Netmask는 255.255.248.0으로 설정되어 있음. 따라서 환경 구축 시 참고하여 구축 해야함.  
+
+ex)  
+```bash
+$ ./build_option.sh –i 3 –m 0
+```
 <br/>
-Ramdisk 예시 : ./build_option.sh –i 3 –m 0  
-CRAMFS 예시 : ./build_option.sh –i 3 –m 1  
-NFS 예시 : ./build_option.sh –i 3 –m 2 –s 10.0.6.123 –c 10.0.6.124 –n /nfs/ast_ktnf/  
+
+#### AST2600  
+```bash
+$ ./build.sh -i -c -g -n
+```  
+**build.sh 옵션**  
+
+-i : interface 적용 옵션 0 : DHCP / 1 : Static  
+-c : BMC ip address  
+-g : BMC gateway ip address  
+-n : BMC netmask address  
+<br/>
+ex)  
+```bash
+$ ./build.sh -i 1 -c 10.0.6.104 -g 10.0.0.1 -n 255.255.240.0
+```
 
 
 
@@ -220,7 +233,7 @@ $ KETI-IPMI
 
 #### AST2600
 ```bash
-$ KETI-Ibmc
+$ KETI-IPMI
 ```
 
 
