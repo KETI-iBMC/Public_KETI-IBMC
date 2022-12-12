@@ -6,12 +6,9 @@
 1. [Introduction of IBMC](#introduction-of-ibmc)
 2. [Requirements](#requirements)  
 	2.1. [Buildroot 환경 구성](#1-buildroot-환경-구성)  
-		2.1.1. [AST2500](#1-ast2500)  
-		2.1.2. [AST2600](#2-ast2600)  
-	2.2. [Buildroot menuconfig](#2-buildroot-menuconfig)  
-	2.3. [KETI-IPMI 빌드](#3-keti-ipmi-빌드)  
-	2.4. [이미지 빌드](#4-이미지-빌드)  
-	2.5. [BMC에 이미지 쓰기](#5-bmc에-이미지-쓰기)  
+	2.2. [Buildroot menuconfig](#2-buildroot-menuconfig)    
+	2.3. [이미지 빌드](#3-이미지-빌드)  
+	2.4. [BMC에 이미지 쓰기](#4-bmc에-이미지-쓰기)  
 3. [Usage](#usage)  
 	3.1, [빌드](#1-빌드)  
 	3.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
@@ -35,47 +32,13 @@
 
 ## Requirements  
 
+
 ### 1. Buildroot 환경 구성
-
-#### 1. AST2500  
-
-1. 파일 내려받기 ( 현재 위치 : /home/keti/Workspace )  
-<https://buildroot.org/downloads/buildroot-2015.11.tar.gz>  
-
-
-2. 내려받은 압축 파일 해제  
-```bash
-$ tar -xvzf buildroot-2015.11.tar.gz
-```
-	
-3. 해당 디렉토리 진입  
-```bash
-$ cd buildroot
-```  
-	
-4. KETI-IPMI.tar 압축을 풀어 ./source/ast_app 디렉토리에 복사  (KETI-IPMI.tar는 소스코드와 함께 제공됨)
-```bash
-$ tar -xvzf KETI-IPMI.tar  
-$ cp -r KETI-IPMB ./source/ast_app  
-```  
-  
-5. prepare_buildTool.sh 를 실행
+1. prepare_buildTool.sh 를 실행
+ - cvs, libncurses-dev, libc6:i386, libncurses5:i386, libstdc++6:i386,zlib1g:i386, u-boot-tools, git 패키지 설치
 ```bash
 $ ./prepare_buildTool.sh
-```  
-
-#### 2. AST2600  
-- **Buildroot 2020.08** 버전 설치
-```bash
-/home/keti/BMC_SDK
-$ ./prepare_buildTool.sh
 ```
-<br/>  
-
-> Buildroot 공식 홈페이지에서 권장하는 패키지와 옵션 패키지  
-- Mandatory : <https://buildroot.org/downloads/manual/manual.html#requirement-mandatory>
-- Optional : <https://buildroot.org/downloads/manual/manual.html#requirement-optional>  
-<br/><br/>
   
   
 ### 2. Buildroot menuconfig  
@@ -109,7 +72,7 @@ $ ./prepare_buildTool.sh
  > Toolchain path를 절대경로로 변경  
  	- Toolchain 경로  
  		- AST2500 : /home/keti/Workspace/buildroot/source/armv6-aspeed-linux-gnueabi  
- 		- AST2600 : $/home/keti/BMC_SDK/source/arm-aspeed-linux-gnueabihf  
+ 		- AST2600 : /home/keti/BMC_SDK/source/arm-aspeed-linux-gnueabihf  
  
  > Toolchain prefix 입력  
  	- AST2500 : armv6-aspeed-linux-gnueabi  
@@ -135,7 +98,7 @@ $ ./armv6-aspeed-linux-gnueabi-gcc –v
 
 
 
-### 4. 이미지 빌드
+### 3. 이미지 빌드
 <br/>
 
 - Buildroot로 이미지 빌드  
@@ -181,7 +144,7 @@ $ ./build.sh -i 1 -c 10.0.6.104 -g 10.0.0.1 -n 255.255.240.0
 
 
 
-### 5. BMC에 이미지 쓰기
+### 4. BMC에 이미지 쓰기
 #### AST2500(2600)-EVB
 1. 빌드한 이미지 파일을 FTP로 다운받아 Windows 10 디렉토리로 옮김
 2. AST2500 Evaluation Board의 좌측에 점퍼 케이블 중 오른쪽 핀을 빼서 GND에 연결하여 BMC Booting을 Disable 
