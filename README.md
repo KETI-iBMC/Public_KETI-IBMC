@@ -184,6 +184,10 @@ $ ./bmc_build.sh
 ```
 AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨  
 
+
+<br/>  
+
+
 ### 2. BMC 상에서 KETI-IPMI/KETI-Ibmc 실행
 
 
@@ -197,6 +201,8 @@ $ KETI-IPMI
 ```bash
 $ KETI-Ibmc
 ```
+
+<br/>  
 
 
 
@@ -213,6 +219,8 @@ $ restful_server
 ```bash
 $ ./KETI-REST
 ```
+<br/>  
+
 
 
 ### 4. KETI-REST 지원 API 리스트 및 URL
