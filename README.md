@@ -13,9 +13,10 @@
 	2.4. [이미지 빌드](#4-이미지-빌드)  
 	2.5. [BMC에 이미지 쓰기](#5-bmc에-이미지-쓰기)  
 3. [Usage](#usage)  
-	3.1. [BMC 상에서 KETI-IPMI 실행](#1-bmc-상에서-keti-ipmi-실행)    
-	3.2. [KETI-REST 실행](#2-keti-rest-실행)  
-	3.3. [KETI-REST 지원 API 리스트 및 URL](#3-keti-rest-지원-api-리스트-및-url)
+	3.1, [빌드](#1-빌드)  
+	3.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
+	3.3. [KETI-REST 실행](#3-keti-rest-실행)  
+	3.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
 	
 
 
@@ -130,24 +131,7 @@ $ ./armv6-aspeed-linux-gnueabi-gcc –v
 <br/><br/>
 
 
-### 3. KETI-IPMI 빌드
 
-#### AST2500
-```bash
-$ make toolchain
-$ make
-$ cd /home/keti/Workspace/buildroot/source/ast_app
-$ ./sk_make.sh
-```
-ast_app/KETI-IPMI 경로에 KETI-IPMI 파일 생성됨
-
-#### AST2600
-```bash
-$ cd /home/keti/BMC_SDK/source/AST2600_BMC
-$ cmake CMakeLists.txt
-$ make
-```
-AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨  
 
 
 
@@ -222,7 +206,23 @@ $ ./build.sh -i 1 -c 10.0.6.104 -g 10.0.0.1 -n 255.255.240.0
 
 ## Usage
 
-### 1. BMC 상에서 KETI-IPMI 실행
+### 1. 빌드
+#### AST2500
+```bash
+$ cd /home/keti/Workspace/buildroot/source/ast_app
+$ ./sk_make.sh
+```
+ast_app/KETI-IPMI 경로에 KETI-IPMI 파일 생성됨
+
+#### AST2600
+```bash
+$ cd /home/keti/BMC_SDK/source/AST2600_BMC
+$ cmake CMakeLists.txt
+$ make
+```
+AST2600_BMC/output/bin 경로에 KETI-Ibmc 파일 생성됨  
+
+### 2. BMC 상에서 KETI-IPMI/KETI-Ibmc 실행
 
 
 #### AST2500
@@ -233,18 +233,18 @@ $ KETI-IPMI
 
 #### AST2600
 ```bash
-$ KETI-IPMI
+$ KETI-Ibmc
 ```
 
 
 
-### 2. KETI-REST 실행
+### 3. KETI-REST 실행
 ```bash
 # 8000번 포트 사용
 $ restful_server
 ```  
 
-### 3. KETI-REST 지원 API 리스트 및 URL
+### 4. KETI-REST 지원 API 리스트 및 URL
 - System Information  
 
 |   ID   |    URL   |   Method   |                   상세기능                 |
