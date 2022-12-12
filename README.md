@@ -201,10 +201,19 @@ $ KETI-Ibmc
 
 
 ### 3. KETI-REST 실행
+#### AST2500
+
 ```bash
 # 8000번 포트 사용
 $ restful_server
 ```  
+
+#### AST2600
+
+```bash
+$ ./KETI-REST
+```
+
 
 ### 4. KETI-REST 지원 API 리스트 및 URL
 - System Information  
