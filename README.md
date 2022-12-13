@@ -36,8 +36,9 @@
 ## Technologies Used
 ### 1. 지능형 메인보드 제어용 BMC 소프트웨어 구조 설계 및 학습모델 런타임 엔진 프로토타입
  - 로컬/원격 기반 On Device AI 기능 탑재 지능형 메인보드 제어 BMC 메시지 송수신 프로토콜  
- - 지능형 메인보드 제어 BMC 기반 컴퓨팅 모듈 센서 모니터링 및 컴퓨팅 모듈 HW 제어 프로토콜  
+ - KETI-IBMC(BMC Control Module) 중심의 지능형 BMC Framework 구성  
  - 서버 메인보드 제어 및 운용을 위한 BMC SW Framework 통합 빌드 구조 설계, 환경 구현  
+ - Application Layer, Framework Layer, Library Layer, Fast Booting Layer로 총 4단계의 Layer로 구성된 지능형 BMC 통합 펌웨어  
 
 
 ### 2. DMTF Redfish 기반 원격 모니터링 및 제어 기술
@@ -58,6 +59,7 @@
   	- FOFL Range 제어를 기반으로 컴퓨팅 모듈 센서별 오류 감지 및 고장 관리 커스터마이징 기능 
 
 ### 4. 서버 시스템 모니터링 데이터 기반 실시간 분석 기술
+ - 스트림 데이터 분석을 위한 데이터 추출·변환·연계(ETL, Extract-Transform-Load) 기술
  - 실시간 탐지 정책 기반 오류 탐지 및 탐지 데이터 연동 기술 모델  
  - 서버 시스템 실시간 모니터링 및 On Device AI를 통한 서버 시스템의 부품 장애 진단 
 
