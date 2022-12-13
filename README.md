@@ -3,8 +3,8 @@
 
 
 ## Table of Contents
-1. [Introduction of IBMC](#introduction-of-ibmc)
-2. [Technologies Used](#technologies-used)
+1. [Introduction of IBMC](#introduction-of-ibmc)  
+2. [Technologies Used](#technologies-used)  
 3. [Requirements](#requirements)  
 	3.1. [Buildroot 환경 구성](#1-buildroot-환경-구성)  
 	3.2. [Buildroot menuconfig](#2-buildroot-menuconfig)    
@@ -14,7 +14,7 @@
 	4.1. [빌드](#1-빌드)  
 	4.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
 	4.3. [KETI-REST 실행](#3-keti-rest-실행)  
-	4.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
+	
 	
 
 
@@ -67,11 +67,12 @@
   	- FOFL Range 제어를 기반으로 컴퓨팅 모듈 센서별 오류 감지 및 고장 관리 커스터마이징 기능 
 
 ### 4. 서버 시스템 모니터링 데이터 기반 실시간 분석 기술
- - 스트림 데이터 분석을 위한 데이터 추출·변환·연계(ETL, Extract-Transform-Load) 기술
+ - 스트림 데이터 분석을 위한 데이터 추출·변환·연계(ETL, Extract-Transform-Load) 기술  
  - 실시간 탐지 정책 기반 오류 탐지 및 탐지 데이터 연동 기술 모델  
- - 서버 시스템 실시간 모니터링 및 On Device AI를 통한 서버 시스템의 부품 장애 진단 
+ - 서버 시스템 실시간 모니터링 및 On Device AI를 통한 서버 시스템의 부품 장애 진단  
 
 
+<br/><br/>
 
 
 
@@ -267,93 +268,6 @@ $ ./KETI-REST
 <br/>  
 
 
-
-### 4. KETI-REST 지원 API 리스트 및 URL
-- System Information  
-
-|   ID   |    URL   |   Method   |                   상세기능                 |
-| ------ | -------- | ---------- | ------------------------------------------ |
-|  ST01  | /sysinfo |    GET     |        IPMI 및 BMC 정보 제공                |
-
-
-<br/>
-
-- FRU Information  
-
-|   ID   |    URL   |   Method   |               상세기능        |     
-| ------ | -------- | -----------|------------------------------- |
-|  FU01  |   /fru   |     GET    |    BMC FRU 정보 제공            |
-|  FU02  |   /fru   |     PUT    |    BMC FRU 정보 수정             |
-
-<br/>
-
-- Server Health  
-
-|   ID   |    URL   |   Method   |                       상세기능                       |     
-| ------ | -------- | -----------   |---------------------------------------------------- |  
-|  SH01  |   /sensor   |     GET    |    센서 상태 정보 제공                            |
-|  SH02  |   /sensor   |     PUT    |    센서 Threshold 값 수정                         |
-|  SH03  |   /event    |     GET    |    BIOS, Sensor, System Event Log 정보 제공       |
-
-- Configuration
-
-|   ID      |   URL    |   Method        |                   상세기능                                              |  
-|---------- |----------|-----------------|-------------------------------------------------------------------------|  
-|  CF01      |   /ddns    |     GET      |         Dynamic DNS 설정 정보 제공                                    |  
-|  CF02      |   /ddns     |    POST     |        Dynamic DNS 설정 정보 수정                                   |  
-|  CF03      |    /network    |    GET    |        BMC 네트워크 정보 제공                                     |  
-|  CF04      |    /network    |    POST     |       BMC 네트워크 정보 수정                                     |  
-|  CF05      |   /ntp     |   GET      |            NTP(Network Time Protocol) 정보 제공                       |  
-|  CF06      |   /ntp     |   POST      |           NTP 설정 정보 수정 (자동 / 수동)                           |  
-|  CF07      |   /smtp     |   GET      |           SMTP(Simple Message Transfer Protocol) 정보 제공                    |  
-|  CF08      |   /smtp     |   POST      |          SMTP 설정 정보 수정                     |  
-|  CF09      |   /ssl     |   POST      |          SSL 인증서 생성                     |  
-|  CF10      |   /ssl     |   GET      |          SSL 인증서 정보 제공                    |  
-|  CF11      |   /activedir     |   GET      |          Active Directory 그룹 정보 제공                 |  
-|  CF12      |   /activedir     |   POST      |          Active Directory 그룹 추가                 |  
-|  CF13      |   /ldap     |   GET      |          LDAP 정보 제공                 |  
-|  CF14      |   /ldap     |   PUT      |          LDAP 설정 정보 수정                 |   
-|  CF15      |   /radius     |   GET      |         RADIUS 정보 제공                 |  
-|  CF16      |   /radius     |   POST      |         RADIUS 설정 정보 수정               |  
-|  CF17      |   /user    |   GET      |         BMC User 리스트 제공                |  
-|  CF18      |   /user    |   POST      |         BMC User 정보 추가                |  
-|  CF19      |   /user    |   DELETE      |         BMC User 삭제                |  
-|  CF20      |   /activedir     |   DELETE      |          Active Directory 설정 정보 삭제                 |  
-
-- Main Page  
-
-|   ID   |    URL   |   Method   |                       상세기능                         |  
-|---------- |----------|-------------|---------------------------------------------------|  
-|   MP00  |   /main?INDEX=0    |   GET   |                   메인 페이지 모든 정보 제공                           |  
-|   MP01  |   /main?INDEX=1    |   GET   |                   System Event Log 정보 제공                           |  
-|   MP02  |   /main?INDEX=2    |   GET   |                   Memory Controller 온도 정보 제공                           |  
-|   MP03  |   /main?INDEX=3    |   GET   |                   Ethernet Controller 온도 정보 제공                           |  
-|   MP04  |   /main?INDEX=4    |   GET   |                  System Board 온도 정보 제공                            |  
-|   MP05  |   /main?INDEX=5    |   GET   |                  Power Module 전력량과 전류량 정보 제공                            |  
-|   MP06  |   /main?INDEX=6    |   GET   |                 서버보드 Fan, CPU Fan RPM 정보 제공                            |  
-|   MP07  |   /main?INDEX=7    |   GET   |                 BMC 네트워크 설정 및 펌웨어 버전정보 제공                             |  
-|   MP08  |   /main?INDEX=8    |   GET   |                센서 및 하드웨어 설치 유무 정보 제공                              |  
-
-- Remote Control
-
-|   ID   |    URL   |   Method   |                       상세기능                       |  
-|---------- |----------|-------------|---------------------------------------------------|  
-|   RC01   |    /power   |   GET   |                       Host 서버 전원 상태 정보 제공                      | 
-|   RC02   |    /power   |   PUT   |                       Host 서버 전원 상태 제어                      |  
-
-- Maintenance
-
-|   ID   |    URL   |   Method   |                       상세기능                       |  
-|---------- |----------|-------------|---------------------------------------------------|  
-|   BR01   |    /bmcReset   |   POST   |                      BMC 공장 초기화 기능 제공                       |  
-|   BR02   |    /wamReset  |   POST   |                      BMC 시스템 재부팅                       |  
-
-- Settings
-
-|   ID   |    URL   |   Method   |                       상세기능                       |  
-|---------- |----------|-------------|---------------------------------------------------|  
-|   SS01   |    /setting   |   GET   |                       BMC Setting 정보 제공                    |  
-|   SS02   |    /setting   |   PUT   |                       BMC Setting 정보 수정                    |  
 
 
 
