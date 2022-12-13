@@ -39,23 +39,31 @@
  - KETI-IBMC(BMC Control Module) 중심의 지능형 BMC Framework 구성  
  - 서버 메인보드 제어 및 운용을 위한 BMC SW Framework 통합 빌드 구조 설계, 환경 구현  
  - Application Layer, Framework Layer, Library Layer, Fast Booting Layer로 총 4단계의 Layer로 구성된 지능형 BMC 통합 펌웨어  
-
+ - Buildroot 기반 BMC_SDK 통합 빌드 환경 및 해당 환경에서 AST2600 Toolchain을 활용한 크로스 컴파일 환경 구축  
+ - AST2600 환경 Tensorflow Lite Micro의 On Device AI 기반 추론 기능 제공 모듈  
 
 ### 2. DMTF Redfish 기반 원격 모니터링 및 제어 기술
+ - Redfish 기반 서버 시스템 제어 관리 구조 규격(Schema)  
+ 	- Redfish 기반 컴퓨팅 모듈 제어⸱관리를 위한 Interface  
+ 	- 지능형 BMC 컴퓨팅 모듈 제어를 위한 Redfish Schema 
  - Redfish 기반 모듈(Enclosure, Power, FAN) 구성 및 제어⸱관리 프로토타입 모듈  
  - System DBus 기반 지능형 BMC System 펌웨어 KETI-IBMC 설계 및 적용  
+ 	- Redfish Schema 요청 처리를 위한 Redfish API 연동 구조 설계 및 API 정의  
+ - Redfish 기반 서버 시스템 제어⸱관리를 위한 GUI Interface
 
 
 ### 3. 컴퓨팅 서버 에너지(공급전원) 관리의 효율화 및 장애 진단 기술
  - 지능형 BMC 기반 에너지 임계치 관리  
+ 	- On Device AI 환경 컴퓨팅 모듈 동작을 위한 Hibernation Engine(에너지 관리 효율화) 및 Feedback Engine(장애 진단 기술) 모듈 연동  
  - 예측 데이터 기반 전원 관리 모드 및 스마트 쿨링 알고리즘   
-  	- 컴퓨팅 모듈 소비전력 감소를 위한 LFC(Look-Ahead Fan Speed Control) 알고리즘   
+  	- 설정된 CPU 온도를 기준으로 실시간 모니터링을 통헤 현재 CPU 온도에 따라 팬의 속력을 조절하여 컴퓨팅 모듈의 전원을 관리하는 BFC(Basic-Fan Speed-Control) 알고리즘
+	- 컴퓨팅 모듈 소비전력 감소를 위한 LFC(Look-Ahead Fan Speed Control) 알고리즘   
   	- On Device AI 구현 모듈을 통해 만들어진 팬 속도 추론 알고리즘을 사용한 팬 속도 제어 
  - 센서 모니터링 정보 기반 컴퓨팅 모듈 이상 감지 및 고장 감내 관리 모듈 
  - 서버 장애 진단을 위한 FDM(Fault Diagnosis and Management)   
  	- FOFL(Fault Outbreak Feedback Level) 설정을 통한 실시간 오류 단계별 처리 및 장애 진단 
  - 서버 장애에 따른 MCE(Machine Check Exception) 상황 통합 관리   
-  	- FOFL 단계에 따른 서버 장애 및 오류 상황 통합관리 기술 및 피드백 과정 
+  	- FOFL 단계에 따른 서버 장애 및 오류 상황 통합관리 기술 및 피드백  
   	- FOFL Range 제어를 기반으로 컴퓨팅 모듈 센서별 오류 감지 및 고장 관리 커스터마이징 기능 
 
 ### 4. 서버 시스템 모니터링 데이터 기반 실시간 분석 기술
