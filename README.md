@@ -4,16 +4,17 @@
 
 ## Table of Contents
 1. [Introduction of IBMC](#introduction-of-ibmc)
-2. [Requirements](#requirements)  
-	2.1. [Buildroot 환경 구성](#1-buildroot-환경-구성)  
-	2.2. [Buildroot menuconfig](#2-buildroot-menuconfig)    
-	2.3. [이미지 빌드](#3-이미지-빌드)  
-	2.4. [BMC에 이미지 쓰기](#4-bmc에-이미지-쓰기)  
-3. [Usage](#usage)  
-	3.1. [빌드](#1-빌드)  
-	3.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
-	3.3. [KETI-REST 실행](#3-keti-rest-실행)  
-	3.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
+2. [Technologies Used](#technologies-used)
+3. [Requirements](#requirements)  
+	3.1. [Buildroot 환경 구성](#1-buildroot-환경-구성)  
+	3.2. [Buildroot menuconfig](#2-buildroot-menuconfig)    
+	3.3. [이미지 빌드](#3-이미지-빌드)  
+	3.4. [BMC에 이미지 쓰기](#4-bmc에-이미지-쓰기)  
+4. [Usage](#usage)  
+	4.1. [빌드](#1-빌드)  
+	4.2. [BMC 상에서 KETI-IPMI/KETI-Ibmc 실행](#2-bmc-상에서-keti-ipmiketi-ibmc-실행)    
+	4.3. [KETI-REST 실행](#3-keti-rest-실행)  
+	4.4. [KETI-REST 지원 API 리스트 및 URL](#4-keti-rest-지원-api-리스트-및-url)
 	
 
 
@@ -29,6 +30,40 @@
 >**서버의 메인보드에 내장된 컨트롤러로 시스템 관리 S/W와 H/W간의 인터페이스를 통해 On Device AI을 활용한 지능형 소비전력 + 장애 관리 펌웨어 SW 기술**   
 
 <br/><br/>
+
+
+
+## Technologies Used
+### 1. 지능형 메인보드 제어용 BMC 소프트웨어 구조 설계 및 학습모델 런타임 엔진 프로토타입
+ - 로컬/원격 기반 On Device AI 기능 탑재 지능형 메인보드 제어 BMC 메시지 송수신 프로토콜  
+ - 지능형 메인보드 제어 BMC 기반 컴퓨팅 모듈 센서 모니터링 및 컴퓨팅 모듈 HW 제어 프로토콜  
+ - 서버 메인보드 제어 및 운용을 위한 BMC SW Framework 통합 빌드 구조 설계, 환경 구현  
+
+
+### 2. DMTF Redfish 기반 원격 모니터링 및 제어 기술
+ - Redfish 기반 모듈(Enclosure, Power, FAN) 구성 및 제어⸱관리 프로토타입 모듈  
+ - System DBus 기반 지능형 BMC System 펌웨어 KETI-IBMC 설계 및 적용  
+
+
+### 3. 컴퓨팅 서버 에너지(공급전원) 관리의 효율화 및 장애 진단 기술
+ - 지능형 BMC 기반 에너지 임계치 관리  
+ - 예측 데이터 기반 전원 관리 모드 및 스마트 쿨링 알고리즘   
+  	- 컴퓨팅 모듈 소비전력 감소를 위한 LFC(Look-Ahead Fan Speed Control) 알고리즘   
+  	- On Device AI 구현 모듈을 통해 만들어진 팬 속도 추론 알고리즘을 사용한 팬 속도 제어 
+ - 센서 모니터링 정보 기반 컴퓨팅 모듈 이상 감지 및 고장 감내 관리 모듈 
+ - 서버 장애 진단을 위한 FDM(Fault Diagnosis and Management)   
+ 	- FOFL(Fault Outbreak Feedback Level) 설정을 통한 실시간 오류 단계별 처리 및 장애 진단 
+ - 서버 장애에 따른 MCE(Machine Check Exception) 상황 통합 관리   
+  	- FOFL 단계에 따른 서버 장애 및 오류 상황 통합관리 기술 및 피드백 과정 
+  	- FOFL Range 제어를 기반으로 컴퓨팅 모듈 센서별 오류 감지 및 고장 관리 커스터마이징 기능 
+
+### 4. 서버 시스템 모니터링 데이터 기반 실시간 분석 기술
+ - 실시간 탐지 정책 기반 오류 탐지 및 탐지 데이터 연동 기술 모델  
+ - 서버 시스템 실시간 모니터링 및 On Device AI를 통한 서버 시스템의 부품 장애 진단 
+
+
+
+
 
 ## Requirements  
 
